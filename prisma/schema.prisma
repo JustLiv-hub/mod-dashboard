@@ -14,13 +14,12 @@ model Member {
   start       DateTime
   end         DateTime
   isModerator Boolean  @default(false)
-
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
 
 model RoleMapping {
-  id          String   @id @default(cuid())
+  id          String @id @default(cuid())
   plan        String
   tier        Int
   discordRole String
