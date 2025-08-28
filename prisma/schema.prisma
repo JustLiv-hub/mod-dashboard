@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Member {
+  id          String   @id @default(cuid())
+  username    String
+  tier        Int
+  start       DateTime
+  end         DateTime
+  isModerator Boolean  @default(false)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model RoleMapping {
+  id          String   @id @default(cuid())
+  plan        String
+  tier        Int
+  discordRole String
+}
